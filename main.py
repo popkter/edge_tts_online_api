@@ -48,6 +48,12 @@ async def synthesize(request: Request):
 async def stream_audio(text: str, voice: str, rate: int, volume: int):
     if not text:
         raise HTTPException(status_code=400, detail="Text Parameter is required")
+    if not voice:
+        voice = 'Female-XiaoxiaoNeural'
+    if not rate:
+        rate = 12
+    if not volume:
+        volume = 0
     return StreamingResponse(generate_audio_chunks(text, voice, rate, volume), media_type="audio/mp3")
 
 
