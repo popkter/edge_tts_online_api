@@ -1,5 +1,4 @@
 SUPPORTED_VOICES = {
-    # 这里只罗列了 en-US 和 zh-CN 的发音，其他语言的发音请参考上面的链接
     'Female-AnaNeural': 'en-US-AnaNeural',
     'Female-AriaNeural': 'en-US-AriaNeural',
     'Male-ChristopherNeural': 'en-US-ChristopherNeural',
