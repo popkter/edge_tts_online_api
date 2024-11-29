@@ -1,10 +1,9 @@
+from typing import AsyncGenerator
+
+import edge_tts
+import uvicorn
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import StreamingResponse
-import edge_tts
-from typing import AsyncGenerator
-import uvicorn
-
-from constant import SUPPORTED_VOICES
 
 app = FastAPI()
 
@@ -19,7 +18,7 @@ async def generate_audio_chunks(text: str, voice: str, rate: int, volume: int) -
     else:
         volumes = f"{volume}%"
 
-    communicate = edge_tts.Communicate(text, SUPPORTED_VOICES[voice], rate=rates, volume=volumes)
+    communicate = edge_tts.Communicate(text, voice, rate=rates, volume=volumes)
 
     async for chunk in communicate.stream():
         if chunk["type"] == "audio":
