@@ -6,8 +6,11 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
+from dotenv import load_dotenv
+import os
 
-from token import SENSE_TTS_API_KEY
+load_dotenv()
+SENSE_TTS_API_KEY =os.getenv("SENSE_TTS_API_KEY")
 
 
 class VoiceEmotion(Enum):
@@ -17,6 +20,8 @@ class VoiceEmotion(Enum):
     ANGRY_L1 = "me_f_y_1001_angryL1"
     ANGRY_L2 = "me_f_y_1001_angryL2"
     ANGRY_L3 = "me_f_y_1001_angryL3"
+
+
 
 
 # 定义请求模型
