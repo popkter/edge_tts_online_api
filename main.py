@@ -7,6 +7,8 @@ from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
+from token import SENSE_TTS_API_KEY
+
 
 class VoiceEmotion(Enum):
     NORMAL = "me_f_y_1001_normal"
@@ -31,10 +33,9 @@ app = FastAPI()
 async def generate_audio_chunks(text: str, emotion: str, text_id: str, text_language: str) -> AsyncGenerator[
     bytes, None]:
     url = "http://14.103.16.83:29010/audio/tts"
-    api_key = "app-xKVUmRBNCVxbLt0q1ixZMyap"
 
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": f"Bearer {SENSE_TTS_API_KEY}",
         "Content-Type": "application/json"
     }
 
