@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 10010
 
 # 运行命令
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10010"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10011"]
