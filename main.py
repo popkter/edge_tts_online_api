@@ -93,9 +93,9 @@ app = FastAPI()
 @app.get("/synthesize")
 async def synthesize(
         text: str,
-        emotion: str = "BV705_streaming",
+        emotion: str = "BV407_V2_streaming",
         text_id: str = str(uuid.uuid4()),
-        speed: float = 1.0,
+        speed: float = 1.1,
         volume: float = 1.0,
         pitch: float = 1.0,
 ):
@@ -111,9 +111,9 @@ async def synthesize(
         "audio": {
             "voice_type": emotion,
             "encoding": "mp3",
-            "speed_ratio": 1.0,
-            "volume_ratio": 1.0,
-            "pitch_ratio": 1.0,
+            "speed_ratio": speed,
+            "volume_ratio": volume,
+            "pitch_ratio": pitch,
         },
         "request": {
             "reqid": text_id,
