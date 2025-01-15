@@ -15,13 +15,14 @@ MESSAGE_COMPRESSIONS = {0: "no compression", 1: "gzip", 15: "custom compression 
 
 load_dotenv()
 appid = os.getenv("APP_ID")
-token =  os.getenv("TOKEN")
+token = os.getenv("TOKEN")
 cluster = "volcano_tts"
 
 host = "openspeech.bytedance.com"
 api_url = f"wss://{host}/api/v1/tts/ws_binary"
 
 default_header = bytearray(b'\x11\x10\x11\x00')
+
 
 async def stream_tts(request_json):
     payload_bytes = str.encode(json.dumps(request_json))
@@ -94,7 +95,9 @@ async def synthesize(
         text: str,
         emotion: str = "BV705_streaming",
         text_id: str = str(uuid.uuid4()),
-        text_language: str = "zh"
+        speed: float = 1.0,
+        volume: float = 1.0,
+        pitch: float = 1.0,
 ):
     request_json = {
         "app": {
